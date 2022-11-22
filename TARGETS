@@ -1,0 +1,7 @@
+load("@prelude//platforms:defs.bzl", "execution_platform")
+
+execution_platform(
+    name = "platform-linux",
+    configuration = "prelude//os:linux",
+    visibility = ["PUBLIC"],
+)
