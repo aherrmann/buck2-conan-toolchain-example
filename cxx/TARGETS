@@ -1,3 +1,11 @@
+load("@prelude//toolchains/conan:defs.bzl", "conan_lock_update")
+
+conan_lock_update(
+    name = "lock",
+    conanfile = "conanfile.txt",
+    lockfile_name = "conan.lock",
+)
+
 cxx_binary(
     name = "main",
     srcs = ["main.cc"],

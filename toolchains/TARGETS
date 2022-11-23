@@ -5,6 +5,7 @@ load("@toolchains//python:defs.bzl", "system_python_bootstrap_toolchain")
 system_conan_toolchain(
     name = "conan",
     conan_path = "conan",
+    visibility = ["PUBLIC"],
 )
 
 download_zig_distribution(
