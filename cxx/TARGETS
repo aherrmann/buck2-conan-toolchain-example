@@ -4,6 +4,7 @@ conan_lock_update(
     name = "lock",
     conanfile = "conanfile.txt",
     lockfile_name = "conan.lock",
+    bzl_name = "conan.bzl",
 )
 
 cxx_binary(
