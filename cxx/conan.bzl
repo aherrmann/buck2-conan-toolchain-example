@@ -1,4 +1,4 @@
-load("prelude//toolchains/conan:defs.bzl", "conan_package")
+load("@prelude//toolchains/conan:defs.bzl", "conan_package")
 
 def conan_packages():
     conan_package(
