@@ -6,7 +6,8 @@
     "requires": [
      "1",
      "2",
-     "4"
+     "4",
+     "5"
     ],
     "path": "conanfile.txt",
     "context": "host"
@@ -40,6 +41,12 @@
     "options": "build_executable=True\ndisable_gethostuuid=False\nenable_column_metadata=True\nenable_dbpage_vtab=False\nenable_dbstat_vtab=False\nenable_default_secure_delete=False\nenable_default_vfs=True\nenable_explain_comments=False\nenable_fts3=False\nenable_fts3_parenthesis=False\nenable_fts4=False\nenable_fts5=False\nenable_json1=False\nenable_math_functions=True\nenable_preupdate_hook=False\nenable_rtree=True\nenable_soundex=False\nenable_unlock_notify=True\nfPIC=True\nmax_blob_size=None\nmax_column=None\nmax_variable_number=None\nomit_deprecated=False\nomit_load_extension=False\nshared=False\nthreadsafe=1\nuse_alloca=False",
     "package_id": "8fc930bdbf940331d9f322f454eac3dd06fd27e8",
     "prev": "0",
+    "context": "host"
+   },
+   "5": {
+    "ref": "buckler/0.1",
+    "options": "",
+    "package_id": "5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9",
     "context": "host"
    }
   },

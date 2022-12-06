@@ -29,3 +29,10 @@ def conan_packages():
         options = ['build_executable=True', 'disable_gethostuuid=False', 'enable_column_metadata=True', 'enable_dbpage_vtab=False', 'enable_dbstat_vtab=False', 'enable_default_secure_delete=False', 'enable_default_vfs=True', 'enable_explain_comments=False', 'enable_fts3=False', 'enable_fts3_parenthesis=False', 'enable_fts4=False', 'enable_fts5=False', 'enable_json1=False', 'enable_math_functions=True', 'enable_preupdate_hook=False', 'enable_rtree=True', 'enable_soundex=False', 'enable_unlock_notify=True', 'fPIC=True', 'max_blob_size=None', 'max_column=None', 'max_variable_number=None', 'omit_deprecated=False', 'omit_load_extension=False', 'shared=False', 'threadsafe=1', 'use_alloca=False'],
         deps = [],
     )
+    conan_package(
+        name = 'buckler',
+        lockfile = 'conan.lock',
+        reference = 'buckler/0.1',
+        options = [],
+        deps = [],
+    )
