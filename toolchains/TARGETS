@@ -1,10 +1,15 @@
-load("@prelude//toolchains/conan:defs.bzl", "system_conan_toolchain")
+load("@prelude//toolchains/conan:defs.bzl", "system_conan_toolchain", "conan_init")
 load("@prelude//toolchains/cxx/zig:defs.bzl", "download_zig_distribution", "cxx_zig_toolchain")
 load("@toolchains//python:defs.bzl", "system_python_bootstrap_toolchain")
 
 system_conan_toolchain(
     name = "conan",
     conan_path = "conan",
+    visibility = ["PUBLIC"],
+)
+
+conan_init(
+    name = "conan-init",
     visibility = ["PUBLIC"],
 )
 
