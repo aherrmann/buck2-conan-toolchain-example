@@ -2,7 +2,5 @@
 jemalloc/5.3.0
 openssl/3.0.7
 sqlite3/3.40.0
-buckler/0.1
 
 [generators]
-BucklerGenerator
