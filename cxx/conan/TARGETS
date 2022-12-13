@@ -1,0 +1,128 @@
+load(
+    "@prelude//toolchains/conan:defs.bzl",
+    "conan_component",
+    "conan_dep",
+    "conan_package",
+)
+
+conan_package(
+    name = '_package_jemalloc',
+    lockfile = ':lock',
+    reference = 'jemalloc/5.3.0',
+    deps = [],
+)
+
+conan_package(
+    name = '_package_openssl',
+    lockfile = ':lock',
+    reference = 'openssl/3.0.7',
+    deps = [':_package_zlib'],
+)
+
+conan_package(
+    name = '_package_zlib',
+    lockfile = ':lock',
+    reference = 'zlib/1.2.13',
+    deps = [],
+)
+
+conan_package(
+    name = '_package_sqlite3',
+    lockfile = ':lock',
+    reference = 'sqlite3/3.40.0',
+    deps = [],
+)
+
+conan_dep(
+    name = 'jemalloc',
+    components = {'jemalloc': ':_component_jemalloc_jemalloc'},
+    visibility = ['PUBLIC'],
+)
+
+conan_component(
+    name = '_component_jemalloc_jemalloc',
+    defines = ['JEMALLOC_EXPORT='],
+    cflags = [],
+    cppflags = [],
+    include_paths = ['include', 'include/jemalloc'],
+    libs = ['jemalloc_pic'],
+    static_libs = {'jemalloc_pic': ['lib/libjemalloc_pic.a']},
+    shared_libs = {},
+    system_libs = ['dl', 'pthread', 'rt'],
+    deps = [],
+    package = ':_package_jemalloc',
+)
+
+conan_dep(
+    name = 'openssl',
+    components = {'ssl': ':_component_openssl_ssl', 'crypto': ':_component_openssl_crypto'},
+    visibility = ['PUBLIC'],
+)
+
+conan_component(
+    name = '_component_openssl_ssl',
+    defines = [],
+    cflags = [],
+    cppflags = [],
+    include_paths = ['include'],
+    libs = ['ssl'],
+    static_libs = {'ssl': ['lib/libssl.a']},
+    shared_libs = {},
+    system_libs = ['dl', 'pthread'],
+    deps = [':_component_openssl_crypto'],
+    package = ':_package_openssl',
+)
+
+conan_component(
+    name = '_component_openssl_crypto',
+    defines = [],
+    cflags = [],
+    cppflags = [],
+    include_paths = ['include'],
+    libs = ['crypto'],
+    static_libs = {'crypto': ['lib/libcrypto.a']},
+    shared_libs = {},
+    system_libs = ['dl', 'rt', 'pthread'],
+    deps = [':zlib'],
+    package = ':_package_openssl',
+)
+
+conan_dep(
+    name = 'sqlite3',
+    components = {'sqlite': ':_component_sqlite3_sqlite'},
+    visibility = ['PUBLIC'],
+)
+
+conan_component(
+    name = '_component_sqlite3_sqlite',
+    defines = [],
+    cflags = [],
+    cppflags = [],
+    include_paths = ['include'],
+    libs = ['sqlite3'],
+    static_libs = {'sqlite3': ['lib/libsqlite3.a']},
+    shared_libs = {},
+    system_libs = ['pthread', 'dl', 'm'],
+    deps = [],
+    package = ':_package_sqlite3',
+)
+
+conan_dep(
+    name = 'zlib',
+    components = {'zlib': ':_component_zlib_zlib'},
+    visibility = [],
+)
+
+conan_component(
+    name = '_component_zlib_zlib',
+    defines = [],
+    cflags = [],
+    cppflags = [],
+    include_paths = ['include'],
+    libs = ['z'],
+    static_libs = {'z': ['lib/libz.a']},
+    shared_libs = {},
+    system_libs = [],
+    deps = [],
+    package = ':_package_zlib',
+)

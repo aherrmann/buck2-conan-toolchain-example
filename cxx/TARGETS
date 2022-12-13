@@ -2,21 +2,18 @@ load(
     "@prelude//toolchains/conan:defs.bzl",
     "conan_generate",
     "conan_lock",
-    "conan_lock_update",
+    "conan_update",
     "lock_generate",
 )
-load(":conan.bzl", "conan_packages")
 
 conan_lock(
     name = "lock",
     conanfile = "conanfile.txt",
 )
 
-conan_lock_update(
-    name = "lock-update",
-    conanfile = "conanfile.txt",
-    lockfile_name = "conan.lock",
-    bzl_name = "conan.bzl",
+lock_generate(
+    name = "lock-generate",
+    lockfile = ":lock",
 )
 
 conan_generate(
@@ -25,14 +22,17 @@ conan_generate(
     lockfile = ":lock",
 )
 
+conan_update(
+    name = "update",
+    lockfile = ":lock",
+    lock_generate = ":lock-generate",
+    conan_generate = ":conan-generate",
+    conanfile = "conanfile.txt",
+    lockfile_name = "conan.lock",
+    targets_name = "conan/TARGETS",
+)
+
 cxx_binary(
     name = "main",
     srcs = ["main.cc"],
-)
-
-conan_packages()
-
-lock_generate(
-    name = "lock-generate",
-    lockfile = ":lock",
 )
