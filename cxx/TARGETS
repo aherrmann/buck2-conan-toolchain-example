@@ -3,6 +3,7 @@ load(
     "conan_generate",
     "conan_lock",
     "conan_lock_update",
+    "lock_generate",
 )
 load(":conan.bzl", "conan_packages")
 
@@ -19,7 +20,7 @@ conan_lock_update(
 )
 
 conan_generate(
-    name = "generate",
+    name = "conan-generate",
     conanfile = "conanfile.txt",
     lockfile = ":lock",
 )
@@ -30,3 +31,8 @@ cxx_binary(
 )
 
 conan_packages()
+
+lock_generate(
+    name = "lock-generate",
+    lockfile = ":lock",
+)
