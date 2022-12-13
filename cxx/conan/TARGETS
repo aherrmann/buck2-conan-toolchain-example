@@ -1,3 +1,6 @@
+# @generated
+# Update using `buck2 run self//cxx:update`
+
 load(
     "@prelude//toolchains/conan:defs.bzl",
     "conan_component",
