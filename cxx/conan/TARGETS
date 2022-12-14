@@ -10,28 +10,28 @@ load(
 
 conan_package(
     name = '_package_jemalloc',
-    lockfile = ':lock',
+    lockfile = 'self//cxx:lock',
     reference = 'jemalloc/5.3.0',
     deps = [],
 )
 
 conan_package(
     name = '_package_openssl',
-    lockfile = ':lock',
+    lockfile = 'self//cxx:lock',
     reference = 'openssl/3.0.7',
     deps = [':_package_zlib'],
 )
 
 conan_package(
     name = '_package_zlib',
-    lockfile = ':lock',
+    lockfile = 'self//cxx:lock',
     reference = 'zlib/1.2.13',
     deps = [],
 )
 
 conan_package(
     name = '_package_sqlite3',
-    lockfile = ':lock',
+    lockfile = 'self//cxx:lock',
     reference = 'sqlite3/3.40.0',
     deps = [],
 )

@@ -9,6 +9,7 @@ load(
 conan_lock(
     name = "lock",
     conanfile = "conanfile.txt",
+    visibility = ["//cxx/conan:"],
 )
 
 lock_generate(
