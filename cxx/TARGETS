@@ -36,4 +36,5 @@ conan_update(
 cxx_binary(
     name = "main",
     srcs = ["main.cc"],
+    deps = ["//cxx/conan:jemalloc"],
 )
