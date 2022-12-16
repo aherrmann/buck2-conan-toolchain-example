@@ -25,6 +25,7 @@ conan_profile(
 
 conan_init(
     name = "conan-init",
+    profile = ":conan-profile",
     visibility = ["PUBLIC"],
 )
 
