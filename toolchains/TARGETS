@@ -19,7 +19,7 @@ conan_profile(
     os = "Linux",
     build_type = "Release",
     compiler = "clang",
-    compiler_version = "13",
+    compiler_version = "15",
     compiler_libcxx = "libc++",
 )
 

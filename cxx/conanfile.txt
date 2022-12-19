@@ -1,6 +1,7 @@
 [requires]
 jemalloc/5.3.0
 openssl/3.0.7
+poco/1.12.4
 sqlite3/3.40.0
 
 [generators]
