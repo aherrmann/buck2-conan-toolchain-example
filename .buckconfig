@@ -15,4 +15,4 @@ name = TARGETS
 execution_platforms = ovr_config//platforms:default
 
 [parser]
-target_platform_detector_spec = target://...->//:platform-linux
+target_platform_detector_spec = target://...->//:platform-x86_64-linux

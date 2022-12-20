@@ -1,7 +1,8 @@
 load("@prelude//platforms:defs.bzl", "execution_platform")
 
 execution_platform(
-    name = "platform-linux",
-    configuration = "prelude//os:linux",
+    name = "platform-x86_64-linux",
+    cpu_configuration = "prelude//cpu:x86_64",
+    os_configuration = "prelude//os:linux",
     visibility = ["PUBLIC"],
 )
