@@ -14,6 +14,7 @@ conan_package(
     reference = 'jemalloc/5.3.0',
     package_id = 'f136bc2ce72cb9441783b30f6889a564a9367969',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -22,6 +23,7 @@ conan_package(
     reference = 'kmod/30',
     package_id = 'd6ec9320eb8522fecee9985356296e804f829baf',
     deps = [':_package_zstd', ':_package_xz_utils', ':_package_zlib', ':_package_openssl'],
+    build_deps = [':_package_libtool', ':_package_pkgconf'],
 )
 
 conan_package(
@@ -30,6 +32,7 @@ conan_package(
     reference = 'zstd/1.5.2',
     package_id = 'a0874bebee3a303675198abd5984bf9d4ed3e3fe',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -38,6 +41,7 @@ conan_package(
     reference = 'xz_utils/5.2.5',
     package_id = 'd210755a7d7ebf0bc6cb2d93432be4036160607d',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -46,6 +50,7 @@ conan_package(
     reference = 'zlib/1.2.13',
     package_id = 'd210755a7d7ebf0bc6cb2d93432be4036160607d',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -54,6 +59,7 @@ conan_package(
     reference = 'openssl/3.0.7',
     package_id = '0ba2f704cff9a6c6d1860d1b4298e85921580a1b',
     deps = [':_package_zlib'],
+    build_deps = [],
 )
 
 conan_package(
@@ -62,6 +68,7 @@ conan_package(
     reference = 'sqlite3/3.40.0',
     package_id = '805b39105f24bd698afe3b1c09e698b92efe2f4c',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -70,6 +77,7 @@ conan_package(
     reference = 'libtool/2.4.7',
     package_id = '3e02234d4bcc6a91091e5430e1e41f1741b62c89',
     deps = [':_package_automake'],
+    build_deps = [':_package_gnu-config'],
 )
 
 conan_package(
@@ -78,6 +86,7 @@ conan_package(
     reference = 'automake/1.16.5',
     package_id = '258f6f05ca54813b3d7180161753df7f9ccf7e1d',
     deps = [':_package_autoconf'],
+    build_deps = [],
 )
 
 conan_package(
@@ -86,6 +95,7 @@ conan_package(
     reference = 'autoconf/2.71',
     package_id = '5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9',
     deps = [':_package_m4'],
+    build_deps = [],
 )
 
 conan_package(
@@ -94,6 +104,7 @@ conan_package(
     reference = 'm4/1.4.19',
     package_id = '24647d9fe8ec489125dfbae4b3ebefaf7581674c',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -102,6 +113,7 @@ conan_package(
     reference = 'pkgconf/1.9.3',
     package_id = '24647d9fe8ec489125dfbae4b3ebefaf7581674c',
     deps = [],
+    build_deps = [],
 )
 
 conan_package(
@@ -110,6 +122,7 @@ conan_package(
     reference = 'gnu-config/cci.20210814',
     package_id = '5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9',
     deps = [],
+    build_deps = [],
 )
 
 conan_dep(
