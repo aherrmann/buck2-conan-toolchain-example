@@ -9,36 +9,18 @@ load(
 )
 
 conan_package(
-    name = '_package_jemalloc',
+    name = '_package_libmysqlclient',
     lockfile = 'self//cxx:lock',
-    reference = 'jemalloc/5.3.0',
-    package_id = 'f136bc2ce72cb9441783b30f6889a564a9367969',
-    deps = [],
+    reference = 'libmysqlclient/8.0.30',
+    package_id = 'f98f386bc88aa876ebb80c33a753322fd6c61506',
+    deps = [':_package_openssl', ':_package_zlib', ':_package_zstd', ':_package_lz4'],
     build_deps = [],
 )
 
 conan_package(
-    name = '_package_kmod',
+    name = '_package_openssl',
     lockfile = 'self//cxx:lock',
-    reference = 'kmod/30',
-    package_id = 'd6ec9320eb8522fecee9985356296e804f829baf',
-    deps = [':_package_zstd', ':_package_xz_utils', ':_package_zlib', ':_package_openssl'],
-    build_deps = [':_package_libtool', ':_package_pkgconf'],
-)
-
-conan_package(
-    name = '_package_zstd',
-    lockfile = 'self//cxx:lock',
-    reference = 'zstd/1.5.2',
-    package_id = 'a0874bebee3a303675198abd5984bf9d4ed3e3fe',
-    deps = [],
-    build_deps = [],
-)
-
-conan_package(
-    name = '_package_xz_utils',
-    lockfile = 'self//cxx:lock',
-    reference = 'xz_utils/5.2.5',
+    reference = 'openssl/1.1.1s',
     package_id = 'd210755a7d7ebf0bc6cb2d93432be4036160607d',
     deps = [],
     build_deps = [],
@@ -54,227 +36,19 @@ conan_package(
 )
 
 conan_package(
-    name = '_package_openssl',
+    name = '_package_zstd',
     lockfile = 'self//cxx:lock',
-    reference = 'openssl/3.0.7',
-    package_id = '0ba2f704cff9a6c6d1860d1b4298e85921580a1b',
-    deps = [':_package_zlib'],
-    build_deps = [],
-)
-
-conan_package(
-    name = '_package_sqlite3',
-    lockfile = 'self//cxx:lock',
-    reference = 'sqlite3/3.40.0',
-    package_id = '805b39105f24bd698afe3b1c09e698b92efe2f4c',
+    reference = 'zstd/1.5.2',
+    package_id = 'a0874bebee3a303675198abd5984bf9d4ed3e3fe',
     deps = [],
     build_deps = [],
 )
 
 conan_package(
-    name = '_package_libtool',
+    name = '_package_lz4',
     lockfile = 'self//cxx:lock',
-    reference = 'libtool/2.4.7',
-    package_id = '3e02234d4bcc6a91091e5430e1e41f1741b62c89',
-    deps = [':_package_automake'],
-    build_deps = [':_package_gnu-config'],
-)
-
-conan_package(
-    name = '_package_automake',
-    lockfile = 'self//cxx:lock',
-    reference = 'automake/1.16.5',
-    package_id = '258f6f05ca54813b3d7180161753df7f9ccf7e1d',
-    deps = [':_package_autoconf'],
-    build_deps = [],
-)
-
-conan_package(
-    name = '_package_autoconf',
-    lockfile = 'self//cxx:lock',
-    reference = 'autoconf/2.71',
-    package_id = '5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9',
-    deps = [':_package_m4'],
-    build_deps = [],
-)
-
-conan_package(
-    name = '_package_m4',
-    lockfile = 'self//cxx:lock',
-    reference = 'm4/1.4.19',
-    package_id = '24647d9fe8ec489125dfbae4b3ebefaf7581674c',
+    reference = 'lz4/1.9.4',
+    package_id = 'd210755a7d7ebf0bc6cb2d93432be4036160607d',
     deps = [],
     build_deps = [],
-)
-
-conan_package(
-    name = '_package_pkgconf',
-    lockfile = 'self//cxx:lock',
-    reference = 'pkgconf/1.9.3',
-    package_id = '24647d9fe8ec489125dfbae4b3ebefaf7581674c',
-    deps = [],
-    build_deps = [],
-)
-
-conan_package(
-    name = '_package_gnu-config',
-    lockfile = 'self//cxx:lock',
-    reference = 'gnu-config/cci.20210814',
-    package_id = '5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9',
-    deps = [],
-    build_deps = [],
-)
-
-conan_dep(
-    name = 'jemalloc',
-    components = {'jemalloc': ':_component_jemalloc_jemalloc'},
-    visibility = ['PUBLIC'],
-)
-
-conan_component(
-    name = '_component_jemalloc_jemalloc',
-    defines = ['JEMALLOC_EXPORT='],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include', 'include/jemalloc'],
-    libs = ['jemalloc_pic'],
-    static_libs = {'jemalloc_pic': ['lib/libjemalloc_pic.a']},
-    shared_libs = {},
-    system_libs = ['dl', 'pthread', 'rt'],
-    deps = [],
-    package = ':_package_jemalloc',
-)
-
-conan_dep(
-    name = 'kmod',
-    components = {'kmod': ':_component_kmod_kmod'},
-    visibility = ['PUBLIC'],
-)
-
-conan_component(
-    name = '_component_kmod_kmod',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['kmod'],
-    static_libs = {},
-    shared_libs = {'kmod': ['lib/libkmod.so', 'lib/libkmod.so.2', 'lib/libkmod.so.2.4.0']},
-    system_libs = ['pthread'],
-    deps = [],
-    package = ':_package_kmod',
-)
-
-conan_dep(
-    name = 'sqlite3',
-    components = {'sqlite': ':_component_sqlite3_sqlite'},
-    visibility = ['PUBLIC'],
-)
-
-conan_component(
-    name = '_component_sqlite3_sqlite',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['sqlite3'],
-    static_libs = {'sqlite3': ['lib/libsqlite3.a']},
-    shared_libs = {},
-    system_libs = ['pthread', 'dl', 'm'],
-    deps = [],
-    package = ':_package_sqlite3',
-)
-
-conan_dep(
-    name = 'zstd',
-    components = {'zstdlib': ':_component_zstd_zstdlib'},
-    visibility = [],
-)
-
-conan_component(
-    name = '_component_zstd_zstdlib',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['zstd'],
-    static_libs = {'zstd': ['lib/libzstd.a']},
-    shared_libs = {},
-    system_libs = ['pthread'],
-    deps = [],
-    package = ':_package_zstd',
-)
-
-conan_dep(
-    name = 'xz_utils',
-    components = {'xz_utils': ':_component_xz_utils_xz_utils'},
-    visibility = [],
-)
-
-conan_component(
-    name = '_component_xz_utils_xz_utils',
-    defines = ['LZMA_API_STATIC'],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['lzma'],
-    static_libs = {'lzma': ['lib/liblzma.a']},
-    shared_libs = {},
-    system_libs = ['pthread'],
-    deps = [],
-    package = ':_package_xz_utils',
-)
-
-conan_dep(
-    name = 'openssl',
-    components = {'ssl': ':_component_openssl_ssl', 'crypto': ':_component_openssl_crypto'},
-    visibility = ['PUBLIC'],
-)
-
-conan_component(
-    name = '_component_openssl_ssl',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['ssl'],
-    static_libs = {'ssl': ['lib/libssl.a']},
-    shared_libs = {},
-    system_libs = ['dl', 'pthread'],
-    deps = [':_component_openssl_crypto'],
-    package = ':_package_openssl',
-)
-
-conan_component(
-    name = '_component_openssl_crypto',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['crypto'],
-    static_libs = {'crypto': ['lib/libcrypto.a']},
-    shared_libs = {},
-    system_libs = ['dl', 'rt', 'pthread'],
-    deps = [':zlib'],
-    package = ':_package_openssl',
-)
-
-conan_dep(
-    name = 'zlib',
-    components = {'zlib': ':_component_zlib_zlib'},
-    visibility = [],
-)
-
-conan_component(
-    name = '_component_zlib_zlib',
-    defines = [],
-    cflags = [],
-    cppflags = [],
-    include_paths = ['include'],
-    libs = ['z'],
-    static_libs = {'z': ['lib/libz.a']},
-    shared_libs = {},
-    system_libs = [],
-    deps = [],
-    package = ':_package_zlib',
 )

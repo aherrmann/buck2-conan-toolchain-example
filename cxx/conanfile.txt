@@ -1,7 +1,4 @@
 [requires]
-jemalloc/5.3.0
-kmod/30
-openssl/3.0.7
-sqlite3/3.40.0
+libmysqlclient/8.0.30
 
 [generators]
